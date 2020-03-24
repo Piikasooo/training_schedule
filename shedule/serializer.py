@@ -5,14 +5,14 @@ from .models import Task
 
 class TaskSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Task
-        fields = ('date', 'start_time', 'end_time', 'person_id')
-
     date = serializers.DateField()
     start_time = serializers.TimeField()
     end_time = serializers.TimeField()
     person_id = serializers.IntegerField()
+
+    class Meta:
+        model = Task
+        fields = ('date', 'start_time', 'end_time', 'person_id')
 
     def create(self, validated_data):
         return Task.objects.create(**validated_data)
