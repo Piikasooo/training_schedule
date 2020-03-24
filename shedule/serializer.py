@@ -9,10 +9,10 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = ('date', 'start_time', 'end_time', 'person_id')
 
-        date = serializers.DateField()
-        start_time = serializers.TimeField()
-        end_time = serializers.TimeField()
-        person_id = serializers.IntegerField()
+    date = serializers.DateField()
+    start_time = serializers.TimeField()
+    end_time = serializers.TimeField()
+    person_id = serializers.IntegerField()
 
     def create(self, validated_data):
         return Task.objects.create(**validated_data)
