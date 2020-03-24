@@ -2,14 +2,14 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     password = serializers.CharField(style={'input_type': 'password'})
 
     class Meta:
         model = User
         extra_kwargs = {'password': {'write_only': True}}
-        fields = 'username', 'password', 'first_name', 'last_name', 'email'
+        fields = 'url', 'username', 'password', 'first_name', 'last_name', 'email'
 
     def create(self, validated_data):
         user = User(
