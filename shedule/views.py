@@ -24,7 +24,7 @@ class TaskViewSet(ModelViewSet):
     serializer_class = TaskSerializer
 
     def get_permissions(self):
-        if self.action == ['create', 'update', 'partial_update', 'destroy']:
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
             self.permission_classes = IsAdminUser,
         else:
             self.permission_classes = IsAuthenticated,
