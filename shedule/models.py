@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
 from django.core.exceptions import ValidationError
 
 
@@ -11,7 +10,7 @@ class Task(models.Model):
     person = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Traning {self.person} from {self.start_time}, to {self.end_time} '
+        return f'{self.date} {self.person} traning from {self.start_time}, to {self.end_time} '
 
     def clean(self):
         try:

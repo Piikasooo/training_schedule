@@ -1,6 +1,7 @@
 from rest_framework import serializers
-
+import datetime
 from .models import Task
+from django.core.exceptions import ValidationError
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -24,3 +25,17 @@ class TaskSerializer(serializers.ModelSerializer):
         instance.person_id = validated_data.get('person_id', instance.person_id)
         instance.save()
         return instance
+
+    def validate(self, data):
+        try:
+            if data['date'] < datetime.date.today():
+                raise ValidationError("The date cannot be in the past!")
+            elif data['end_time'] < data['start_time']:
+                raise ValidationError("The end_time cannot be before start_time!")
+            elif (data['date'] == datetime.date.today() and data['end_time'] < datetime.datetime.now().time()) or \
+                (data['date'] == datetime.date.today() and data['start_time'] < datetime.datetime.now().time()):
+                raise ValidationError("The time cannot be in the past!")
+        except TypeError:
+            raise ValidationError('Incorrect value of date or time')
+        return data
+
