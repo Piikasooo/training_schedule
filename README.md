@@ -25,7 +25,8 @@ https://training-shedule-app.herokuapp.com/
 `Admin password: admin`
  - POST method for registration of user. Admin can use GET, POST, PUT, DELETE
  `/users/api/`
-`example: curl --header "Content-Type:application/json" --request POST --data '{"username":"<name_user>", "email":"<your_email>" "password":"<your_pass>"}' https://training-shedule-app.herokuapp.com/users/api/ `
+ 
+  `example: curl --header "Content-Type:application/json" --request POST --data '{"username":"<name_user>", "email":"<your_email>" "password":"<your_pass>"}' https://training-shedule-app.herokuapp.com/users/api/ `
  - Detail information about user
 `/users/api/<id>/`
  - Schedule of training
@@ -34,7 +35,8 @@ https://training-shedule-app.herokuapp.com/
 `/training/api/<id>/`
  - Get your token (POST)
 `/api-token-auth/`
-`example: curl --header "Content-Type:application/json" --request POST --data '{"username":"test_user", "password":"test_pass"}' https://training-shedule-app.herokuapp.com/api-token-auth/ `
+
+  `example: curl --header "Content-Type:application/json" --request POST --data '{"username":"test_user", "password":"test_pass"}' https://training-shedule-app.herokuapp.com/api-token-auth/ `
 
 ## Deploy on your local machine
 1. Install requirements
