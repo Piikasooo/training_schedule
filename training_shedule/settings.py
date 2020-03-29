@@ -27,8 +27,7 @@ env = Env()
 env.read_env()
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -148,7 +147,3 @@ REST_FRAMEWORK = {
 
 # Acivate Dgango-Heroku.
 django_heroku.settings(locals())
-
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
-
